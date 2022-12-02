@@ -23,6 +23,8 @@ const main = async () => {
 main();
 
 const server = app.listen(process.env.PORT, () =>
-	console.log(`App is listening at http://localhost:${process.env.PORT}`)
+	console.log(
+		`App is listening at http://${process.env.HOST}:${process.env.PORT}`
+	)
 );
 export default server;

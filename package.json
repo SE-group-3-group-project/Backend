@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "SET NODE_ENV=dev&& nodemon index",
     "test": "SET NODE_ENV=test&& mocha --timeout 10000 --exit"
