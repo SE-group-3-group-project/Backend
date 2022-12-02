@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema({
+const gradSchema = new mongoose.Schema({
 
     id_: {type: Number},
     name: { first: { type: String }, last: { type: String } },
@@ -30,8 +30,11 @@ const userSchema = new mongoose.Schema({
 
     
 
-
 });
+
+const gradProfile = mongoose.model('GradProfile', gradSchema);
+
+export default gradProfile;
 
 
     
