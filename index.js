@@ -10,6 +10,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
 
+
+
 const db = process.env.DBURI;
 const main = async () => {
 	console.log(`Connecting to database at : ${db}`);

@@ -32,7 +32,7 @@ const gradSchema = new mongoose.Schema({
 
 });
 
-const gradProfile = mongoose.model('GradProfile', gradSchema);
+const gradProfile = mongoose.model('gradProfile', gradSchema);
 
 export default gradProfile;
 
