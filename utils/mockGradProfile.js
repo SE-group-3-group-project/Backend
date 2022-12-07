@@ -5,6 +5,7 @@ const mockGradProfiles = [
 			first: "Firstname",
 			last: "lastName",
 		},
+		profilePicture: `https://www.gstatic.com/webp/gallery/2.jpg`,
 		contactDetails: {
 			personalEmail: "anEmail@gmail.com",
 			dfEmail: "anEmail@digitialfutures.com",
@@ -68,6 +69,7 @@ const mockGradProfiles = [
 					title: "This is a portfolio item",
 					url: "https://myportfolioitem",
 					year: "2015",
+					weight: "L",
 					priority: "10",
 					description: "This is a description of a portfolio item",
 				},
@@ -80,6 +82,7 @@ const mockGradProfiles = [
 			first: "Firstname2",
 			last: "lastName2",
 		},
+		profilePicture: `https://www.gstatic.com/webp/gallery/2.jpg`,
 		contactDetails: {
 			personalEmail: "anEmail@gmail.com",
 			dfEmail: "anEmail@digitialfutures.com",
@@ -143,6 +146,7 @@ const mockGradProfiles = [
 					title: "This is a portfolio item",
 					url: "https://myportfolioitem",
 					year: "2015",
+					weight: "xL",
 					priority: "10",
 					description: "This is a description of a portfolio item",
 				},
