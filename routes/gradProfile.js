@@ -49,9 +49,9 @@ router
 				if (result === null) {
 					res.status(404).send(`That profile cannot be found`);
 				}
-				res.json(`Todo updated!`);
+				res.json(`Profile updated!`);
 			} catch (error) {
-				res.status(404).send(`That todo cannot be found`);
+				res.status(404).send(`That Profile cannot be found`);
 			}
 		}
 	);
