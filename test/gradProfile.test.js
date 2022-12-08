@@ -22,7 +22,7 @@ describe("test of retrieving a grad profile", () => {
 				throw new Error();
 			});
 	});
-	describe("Test the gradProfiles methods", () => {
+	describe("Test /GET/:id gradprofile", () => {
 		it("should retrieve the correct profile with the id attached", async () => {
 			const res = await chai
 				.request(server)
@@ -54,6 +54,22 @@ describe("test of retrieving a grad profile", () => {
 
 			expect(res).to.have.status(404);
 			expect(res.body).to.have.property(`message`, `Graduate not found.`);
+		});
+	});
+	describe("Test /PUT/:id gradprofile", () => {
+		it("should update a graduate profile with PUT for a given id ", async () => {
+			const res = await chai
+				.request(server)
+				.put(`${TESTBASEPATH}/${testData[1][`_id`]}`)
+				.send(testData[1]);
+			expect(res).to.have.status(200);
+		});
+		it("should return a 404 error if the id to update is not found", async () => {
+			const res = await chai
+				.request(server)
+				.put(`${TESTBASEPATH}/notAValidId`)
+				.send(testData[1]);
+			expect(res).to.have.status(404);
 		});
 	});
 });
