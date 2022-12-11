@@ -1,6 +1,5 @@
 const mockGradProfiles = [
 	{
-		_id: "638f50a9e1b41e929d39dd5f",
 		name: {
 			first: "Firstname",
 			last: "lastName",

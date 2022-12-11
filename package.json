@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "SET NODE_ENV=dev&& nodemon index",
-    "test": "SET NODE_ENV=test&& mocha --timeout 10000 --exit"
+    "start": "NODE_ENV=dev nodemon index.js",
+    "test": "NODE_ENV=test mocha --timeout=10000 --exit"
   },
   "repository": {
     "type": "git",
