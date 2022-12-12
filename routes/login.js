@@ -7,6 +7,7 @@ import User from '../models/userSchema.js';
 router.route(`/`)
     .post((req, res) => {
         const { personalEmail, password } = req.body;
+        console.log(req.body);
 
         User.findOne({ personalEmail }, (err, user) => {
             if (user && password === user.password) {

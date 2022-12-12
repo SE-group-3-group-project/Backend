@@ -7,7 +7,6 @@ import morgan from 'morgan'
 import { router as gradProfiles } from "./routes/gradProfile.js";
 
 import { login } from './routes/login.js';
-import { register } from './routes/register.js';
 
 const app = express();
 
@@ -17,7 +16,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(`/gradProfile`, gradProfiles);
 app.use(`/login`, login);
-app.use(`/register`, register);
+
 
 const db = process.env.DBURI;
 const port = process.env.PORT;
