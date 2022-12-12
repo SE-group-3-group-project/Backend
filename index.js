@@ -3,7 +3,12 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
+import morgan from 'morgan'
 import { router as gradProfiles } from "./routes/gradProfile.js";
+
+import { login } from './routes/login.js';
+import { register } from './routes/register.js';
+
 const app = express();
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
@@ -11,6 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(`/gradProfile`, gradProfiles);
+app.use(`/login`, login);
+app.use(`/register`, register);
 
 const db = process.env.DBURI;
 const port = process.env.PORT;
