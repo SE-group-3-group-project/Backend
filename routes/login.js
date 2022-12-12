@@ -11,9 +11,11 @@ router.route(`/`)
         User.findOne({ personalEmail }, (err, user) => {
             if (user && password === user.password) {
                 res.send({ message: `Login success`, user });
+                console.log("successful login");
             }
             else {
                 res.send({ message: `Details not found` });
+                console.log("login failed");
             }
         });
     });
