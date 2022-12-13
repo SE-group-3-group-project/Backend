@@ -5,8 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "SET NODE_ENV=dev&& nodemon index",
-    "test": "SET NODE_ENV=test&& mocha --timeout 10000 --exit"
+    "start": "NODE_ENV=dev nodemon index.js",
+    "test": "NODE_ENV=test mocha --timeout=10000 --exit",
+    "start-win": "SET NODE_ENV=dev&& nodemon index.js",
+    "test-win": "SET NODE_ENV=test&& mocha --timeout 10000 --exit",
+    "test-server": "SET NODE_ENV=test&& nodemon index"
   },
   "repository": {
     "type": "git",
@@ -29,6 +32,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-validator": "^6.14.2",
-    "mongoose": "^6.7.5"
+    "mongoose": "^6.7.5",
+    "morgan": "^1.10.0"
   }
 }

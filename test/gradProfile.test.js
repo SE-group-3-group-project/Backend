@@ -1,7 +1,7 @@
-import chai, { assert, expect } from "chai";
+import chai, { expect } from "chai";
 import chaiHttp from "chai-http";
 import GradProfile from "../models/gradProfile.model.js";
-import mockGradProfile from "../utils/mockGradProfile.json" assert { type: "json" };
+import testData from "../utils/mockGradProfile.js";
 import server from "../index.js";
 const TESTBASEPATH = `/gradProfile`;
 chai.use(chaiHttp);
@@ -15,7 +15,7 @@ describe("test of retrieving a grad profile", () => {
 				throw new Error();
 			});
 
-		await GradProfile.insertMany(mockGradProfile)
+		await GradProfile.insertMany(testData)
 			.then(() => console.log(`Database populated with sampleGradProfiles`))
 			.catch((error) => {
 				console.log(`Error inserting`);
@@ -26,11 +26,11 @@ describe("test of retrieving a grad profile", () => {
 		it("should retrieve the correct profile with the id attached", async () => {
 			const res = await chai
 				.request(server)
-				.get(`${TESTBASEPATH}/${mockGradProfile[1][`_id`]}`)
+				.get(`${TESTBASEPATH}/${testData[1][`_id`]}`)
 				.send();
 			expect(res).to.have.status(200);
 			expect(res.body).to.be.an("object");
-			expect(res.body).to.have.property(`_id`, mockGradProfile[1][`_id`]);
+			expect(res.body).to.have.property(`_id`, testData[1][`_id`]);
 		});
 		it(`should return a 422 when the grad profile id asked for is not in the correct format`, async () => {
 			const res = await chai
@@ -60,15 +60,15 @@ describe("test of retrieving a grad profile", () => {
 		it("should update a graduate profile with PUT for a given id ", async () => {
 			const res = await chai
 				.request(server)
-				.put(`${TESTBASEPATH}/${mockGradProfile[1][`_id`]}`)
-				.send(mockGradProfile[1]);
+				.put(`${TESTBASEPATH}/${testData[1][`_id`]}`)
+				.send(testData[1]);
 			expect(res).to.have.status(200);
 		});
 		it("should return a 404 error if the id to update is not found", async () => {
 			const res = await chai
 				.request(server)
 				.put(`${TESTBASEPATH}/notAValidId`)
-				.send(mockGradProfile[1]);
+				.send(testData[1]);
 			expect(res).to.have.status(404);
 		});
 	});
