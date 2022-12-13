@@ -1,17 +1,13 @@
-import User from '../models/userSchema.js';
-
-import chai from 'chai';
-import { expect } from 'chai';
+import User from '../models/user.model.js';
+import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-
 import server from '../index.js';
-
 import testData from './testData/sampleUsers.json' assert { type: "json" };
 const testDataArray = testData.users;
 
 chai.use(chaiHttp);
 
-describe(`Testing requests on the database`, () => {
+describe(`Authentication tests`, () => {
 
     const testServer = chai.request(server).keepOpen();
 
@@ -32,31 +28,46 @@ describe(`Testing requests on the database`, () => {
         };
     });
 
-    describe(`/GET sample users`, () => {
+    it("should make successful post request to /login", async () => {
+        let testLogin = {
+            personalEmail: "gradex@testaccountone.com",
+            password: "shhh12"
+        }
+        const res = await chai.request(server).post("/login").send(testLogin);
 
-        it(`should return all of the users as an array`, async () => {
-            const res = await server
-                .get(`/login`)
-                .send();
-
-            expect(res).to.have.status(200);
-            expect(res.body).to.be.an(`array`);
-            expect(res.body.length).to.equal(testDataArray.length);
-        });
+        expect(res).to.have.status(200);
     });
 
-    it(`should recognise a user that already exists`, async () => {
-        let user = {
-            "personalEmail": "gradex@testaccountone.com",
-            "password": "shhh12"
-        };
+    it("should login successfully", async () => {
+        let testLogin = {
+            personalEmail: "gradex@testaccountone.com",
+            password: "shhh12"
+        }
+        const res = await chai.request(server).post("/login").send(testLogin);
 
-        const res = await chai.request(testServer)
-            .post(`/register`)
-            .send(user);
-        expect(res).to.have.status(422);
-        expect(res).to.have.property(`error`);
-        expect(res.text).to.be.eql(`user already exists`);
-
+        expect(res.text).to.contain("Login success");
     });
+
+    it("should fail if the supplied password is incorrect", async () => {
+        let testLogin = {
+            personalEmail: "gradex@testaccountone.com",
+            password: "shhh123"
+        }
+        const res = await chai.request(server).post("/login").send(testLogin);
+
+        expect(res).to.have.property("error");
+        expect(res.text).to.contain("Login Failed: Log in credentials are incorrect");
+    });
+
+    it("should fail if the supplied email is incorrect", async () => {
+        let testLogin = {
+            email: "wrong@email.com",
+            password: "shhh12"
+        }
+        const res = await chai.request(server).post("/login").send(testLogin);
+
+        expect(res).to.have.property("error");
+        expect(res.text).to.contain("Login Failed: Log in credentials are incorrect");
+    });
+
 });

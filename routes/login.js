@@ -2,7 +2,7 @@ import express from 'express';
 
 const router = express.Router();
 
-import User from '../models/userSchema.js';
+import User from '../models/user.model.js';
 
 router.route(`/`)
     .post((req, res) => {
@@ -12,11 +12,10 @@ router.route(`/`)
         User.findOne({ personalEmail }, (err, user) => {
             if (user && password === user.password) {
                 res.send({ message: `Login success`, user });
-                console.log("successful login");
             }
             else {
-                res.send({ message: `Details not found` });
-                console.log("login failed");
+                err = { message: `Login Failed: Log in credentials are incorrect` }
+                res.status(401).send(err);
             }
         });
     });

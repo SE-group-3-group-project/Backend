@@ -14,7 +14,7 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
-app.use(`/gradProfile`, gradProfiles);
+// app.use(`/gradProfile`, gradProfiles);
 app.use(`/login`, login);
 
 
