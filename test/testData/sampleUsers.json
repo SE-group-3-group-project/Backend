@@ -1,5 +1,5 @@
 {
-    "testData": [
+    "users": [
         {
             "name": {
                 "first": "TestUserOne",

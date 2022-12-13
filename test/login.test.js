@@ -5,7 +5,6 @@ import { expect } from 'chai';
 import chaiHttp from 'chai-http';
 
 import server from '../index.js';
-
 import testData from './testData/sampleUsers.json' assert { type: "json" };
 const testDataArray = testData.users;
 
@@ -16,6 +15,7 @@ describe(`Testing requests on the database`, () => {
     const testServer = chai.request(server).keepOpen();
 
     beforeEach(async () => {
+        console.log(testData)
         try {
             await User.deleteMany();
             console.log(`Database cleared`);
@@ -24,7 +24,8 @@ describe(`Testing requests on the database`, () => {
             throw new Error();
         };
         try {
-            await User.insertMany(testDataArray);
+            await User.insertMany(testData.users);
+            console.log(testDataArray)
             console.log(`Database populated with test Users`);
         } catch (error) {
             console.log(`Error inserting`);
@@ -52,7 +53,7 @@ describe(`Testing requests on the database`, () => {
         };
 
         const res = await chai.request(testServer)
-            .post(`/register`)
+            .get(`/register`)
             .send(user);
         expect(res).to.have.status(422);
         expect(res).to.have.property(`error`);
