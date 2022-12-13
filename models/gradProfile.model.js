@@ -28,8 +28,11 @@ const GradProfile = new mongoose.Schema({
 				grade: { type: String, required: true, default: "grade" },
 				startDate: { type: Date, required: true, default: "2022-12-07" },
 				endDate: { type: Date, required: true, default: "2022-12-07" },
+<<<<<<< Updated upstream
 				weight: { type: String, required: true, default: "xs" },
 				priority: { type: Number, required: true, default: "10" },
+=======
+>>>>>>> Stashed changes
 				description: { type: String },
 			},
 		],
@@ -37,11 +40,17 @@ const GradProfile = new mongoose.Schema({
 			{
 				school: { type: String, required: true, default: "school" },
 				examType: { type: String, required: true, default: "exam type" },
+<<<<<<< Updated upstream
 				subject: { type: String, required: true, default: "subject" },
 				grade: { type: String, required: true, default: "grade" },
 				year: { type: Number, required: true, default: "2022" },
 				weight: { type: String, required: true, default: "xs" },
 				priority: { type: Number, required: true, default: "10" },
+=======
+				subject: [{ type: String, required: true, default: "subject" }],
+				grade: [{ type: String, required: true, default: "grade" }],
+				year: { type: Number, required: true, default: "2022" },
+>>>>>>> Stashed changes
 				description: { type: String },
 			},
 		],
@@ -52,6 +61,7 @@ const GradProfile = new mongoose.Schema({
 				position: { type: String, required: true, default: "position" },
 				startDate: { type: Date, required: true, default: "2022-12-07" },
 				endDate: { type: Date, required: true, default: "2022-12-07" },
+<<<<<<< Updated upstream
 				weight: { type: String, required: true, default: "xs" },
 				priority: { type: Number, required: true, default: "10" },
 				description: { type: String },
@@ -69,13 +79,37 @@ const GradProfile = new mongoose.Schema({
 				description: { type: String },
 			},
 		],
+=======
+				description: { type: String },
+			},
+		],
+		certifications: [
+			{
+				type: { type: String, required: true, default: "type" },
+				issuer: { type: String, required: true, default: "issuer" },
+				grade: { type: String },
+				year: { type: Number, required: true, default: "2022" },
+				description: { type: String },
+			},
+		],
+		personalAchievements: [
+			{
+				achievement: { type: String, required: true },
+				description: { type: String, required: true },
+				year: { type: Number, required: true },
+			},
+		],
+>>>>>>> Stashed changes
 		portfolio: [
 			{
 				title: { type: String, required: true, default: "title" },
 				url: { type: String, required: true, default: "url" },
 				year: { type: Number, required: true, default: "2022" },
+<<<<<<< Updated upstream
 				weight: { type: String, required: true, default: "xs" },
 				priority: { type: Number, required: true, default: "10" },
+=======
+>>>>>>> Stashed changes
 				description: { type: String },
 			},
 		],
