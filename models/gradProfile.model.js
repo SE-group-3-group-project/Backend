@@ -18,7 +18,8 @@ const GradProfile = new mongoose.Schema({
 		linkedIn: { type: String },
 		phoneNumber: { type: String, required: true, default: "012345678" },
 	},
-
+	nationality: { type: String, required: true },
+	personality: { type: String, required: true },
 	personalStories: {
 		degrees: [
 			{
