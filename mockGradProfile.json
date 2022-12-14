@@ -13,6 +13,8 @@
             "linkedIn": "AnishShah",
             "phoneNumber": "078231829312"
         },
+        "nationality": "British",
+        "personality": "ENTJ",
         "personalStories": {
             "degrees": [
                 {
@@ -46,7 +48,7 @@
             ],
             "workExperiences": [
                 {
-                    "type": "Full-Time Employment",
+                    "type": "full-time",
                     "employer": "SnapShot Ltd",
                     "position": "Photographer",
                     "startDate": "2019-10-10",
@@ -75,10 +77,10 @@
             ],
             "portfolio": [
                 {
-                    "title": "This is a portfolio item",
-                    "url": "https://myportfolioitem",
-                    "year": "2015",
-                    "description": "This is a description of a portfolio item"
+                    "title": "Dad Jokes",
+                    "url": "https://kcxgu.github.io/dad-jokes/",
+                    "year": "2020",
+                    "description": "A Christmas dad jokes game app"
                 }
             ]
         }

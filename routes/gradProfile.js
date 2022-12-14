@@ -14,15 +14,6 @@ export const router = express.Router();
 // 				res.json(profile);
 // 		})
 // 	})
-// 	.post(async (req, res) => {
-// 		const newProfile = new GradProfile(req.body);
-// 		try {
-// 			const profile = await newProfile.save();
-// 			res.status(201).json(profile);
-// 		} catch (e) {
-// 			res.status(422).json({ error: `Unable to add new profile` })
-// 		}
-// 	})
 
 router
 	.route("/:id")
@@ -68,9 +59,18 @@ router
 				if (result === null) {
 					res.status(404).send(`That profile cannot be found`);
 				}
-				res.json(`Todo updated!`);
+				res.json(`Profile updated!`);
 			} catch (error) {
-				res.status(404).send(`That todo cannot be found`);
+				res.status(404).send(`That profile cannot be found`);
 			}
 		}
-	);
+	)
+	// .post(async (req, res) => {
+	// 	const newProfile = new GradProfile(req.body);
+	// 	try {
+	// 		const profile = await newProfile.save();
+	// 		res.status(201).json(profile);
+	// 	} catch (e) {
+	// 		res.status(422).json({ error: `Unable to add new profile` })
+	// 	}
+	// })
