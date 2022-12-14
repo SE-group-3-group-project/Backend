@@ -5,16 +5,6 @@ import mongoIdRegExp from "../src/regexps.js";
 
 export const router = express.Router();
 
-// router.route('/')
-// 	.get((req, res) => {
-// 		GradProfile.find({}, (error, profile) => {
-// 			error ?
-// 				res.status(404).json({ error: `Profile not found` })
-// 				:
-// 				res.json(profile);
-// 		})
-// 	})
-
 router
 	.route("/:id")
 	.get((req, res) => {
@@ -41,7 +31,6 @@ router
 			check("contactDetails").exists(),
 			check("personalStories").exists(),
 			check("name").exists(),
-			check("_id").exists().isMongoId(),
 		],
 		async (req, res) => {
 			const errors = validationResult(req);
@@ -64,13 +53,4 @@ router
 				res.status(404).send(`That profile cannot be found`);
 			}
 		}
-	)
-	// .post(async (req, res) => {
-	// 	const newProfile = new GradProfile(req.body);
-	// 	try {
-	// 		const profile = await newProfile.save();
-	// 		res.status(201).json(profile);
-	// 	} catch (e) {
-	// 		res.status(422).json({ error: `Unable to add new profile` })
-	// 	}
-	// })
+	);

@@ -37,7 +37,8 @@ const GradProfile = new mongoose.Schema({
 				examType: { type: String, required: true, default: "exam type" },
 				subject: [{ type: String, required: true, default: "subject" }],
 				grade: [{ type: String, required: true, default: "grade" }],
-				year: { type: Number, required: true, default: "2022" },
+				startDate: { type: Date, required: true, default: "2015-09-07" },
+				endDate: { type: Date, required: true, default: "2020-07-07" },
 			},
 		],
 		workExperiences: [
