@@ -48,7 +48,7 @@ router
 				if (result === null) {
 					res.status(404).send(`That profile cannot be found`);
 				}
-				res.json(`Profile updated!`);
+				res.json({ message: `Profile updated!` });
 			} catch (error) {
 				res.status(404).send(`That profile cannot be found`);
 			}
