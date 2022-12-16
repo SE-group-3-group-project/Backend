@@ -37,15 +37,15 @@ router
 		],
 		async (req, res) => {
 			const errors = validationResult(req);
-			const id = req.params.id;
+			const email = req.params.email;
 			if (!errors.isEmpty()) {
 				return res.status(422).send(`Update of graduate data not possible.`);
 			}
 			const updatedGradProfile = { ...req.body };
 			delete updatedGradProfile._id;
 			try {
-				const result = await GradProfile.findByIdAndUpdate(
-					{ _id: id },
+				const result = await GradProfile.findOneAndUpdate(
+					{ personalEmail: email },
 					updatedGradProfile
 				);
 				if (result === null) {
